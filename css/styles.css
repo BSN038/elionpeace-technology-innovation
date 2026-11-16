@@ -1473,3 +1473,38 @@ h4 {
   }
 
 }
+
+/* ============================================
+   27. DIGITAL ARTEFACT SUBMISSION LINK
+   ============================================ */
+
+.artefact-submission-link {
+  margin: 20px auto 0;
+  max-width: 100%;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #d0d9df;
+  overflow-wrap: anywhere;
+}
+
+.artefact-submission-link a {
+  color: #d8b65a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+@media print {
+  .artefact-submission-link {
+    display: block !important;
+    margin-top: 18px !important;
+    font-size: 11px !important;
+    break-inside: avoid;
+  }
+
+  .artefact-submission-link a {
+    color: #d8b65a !important;
+    text-decoration: underline !important;
+  }
+}

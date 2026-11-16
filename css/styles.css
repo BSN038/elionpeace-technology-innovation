@@ -1245,3 +1245,231 @@ h4 {
   }
 
 }
+
+/* ==============================================
+   24. PDF PRINT STYLES — ELIONPEACE
+   Only applies when printing or saving as PDF
+   ============================================== */
+
+@media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 14mm;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Remove navigation and screen-only controls */
+
+  .skip-link,
+  .reading-progress,
+  .site-header,
+  .hero-actions,
+  .journey-controls,
+  .back-to-top,
+  .footer-link,
+  .menu-toggle {
+    display: none !important;
+  }
+
+  /* Keep the cover but reduce unused space */
+
+  .hero {
+    min-height: 0 !important;
+    padding: 45px 20px 55px !important;
+    break-after: page;
+  }
+
+  .hero-logo {
+    animation: none !important;
+  }
+
+  .hero h1,
+  .hero-description,
+  .hero .eyebrow {
+    animation: none !important;
+  }
+
+  /* Improve section spacing */
+
+  .content-section {
+    padding: 32px 12px 42px !important;
+  }
+
+  .section-heading {
+    break-after: avoid-page;
+  }
+
+  .section-lead,
+  .component-heading {
+    break-after: avoid-page;
+  }
+
+  h2,
+  h3,
+  h4 {
+    break-after: avoid-page;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Prevent cards from splitting */
+
+  .feature-card,
+  .technology-card,
+  .journey-step,
+  .maturity-step,
+  .interactive-detail,
+  .key-takeaway {
+    break-inside: avoid;
+  }
+
+  /* More compact printable layouts */
+
+  .feature-grid,
+  .technology-grid {
+    gap: 10px !important;
+  }
+
+  .journey-steps,
+  .maturity-steps {
+    gap: 8px !important;
+  }
+
+  .feature-card,
+  .technology-card {
+    padding: 16px !important;
+  }
+
+  .journey-step,
+  .maturity-step {
+    min-height: 100px !important;
+    padding: 12px !important;
+  }
+
+  .research-panel {
+    padding: 22px !important;
+    box-shadow: none !important;
+  }
+
+  .interactive-detail {
+    padding: 20px !important;
+    box-shadow: none !important;
+  }
+
+  /* Preserve reference readability */
+
+  .references-panel p {
+    overflow-wrap: anywhere;
+  }
+
+  .references-panel a {
+    word-break: break-word;
+  }
+
+  /* Prevent a separate page for the footer */
+
+  .site-footer {
+    padding: 20px 12px !important;
+  }
+
+  .footer-brand {
+    width: 150px !important;
+  }
+
+  /* Disable animations in the printed document */
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+}
+
+/* ============================================
+   26. FINAL PDF PRINT REFINEMENTS
+   ElionPeace — Technology Innovation
+   ============================================ */
+
+@media print {
+
+  /* Remove the selected interactive panel.
+     The complete printable version replaces it. */
+
+  #technology-detail,
+  #journey-detail,
+  #maturity-detail {
+    display: none !important;
+  }
+
+  /* Display all interactive explanations */
+
+  .print-interactive-summary {
+    display: block !important;
+    width: 100%;
+    margin: 18px 0 24px !important;
+  }
+
+  /* Professional cards for the PDF */
+
+  .print-interactive-summary .print-summary-item {
+    display: block !important;
+    box-sizing: border-box;
+    width: 100%;
+
+    background: #192d3b !important;
+    border: 1px solid #315364 !important;
+    border-radius: 12px !important;
+
+    padding: 16px 20px !important;
+    margin: 0 0 12px !important;
+
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .print-interactive-summary .detail-label {
+    display: block;
+    color: #d8b65a !important;
+    font-size: 10px !important;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px !important;
+  }
+
+  .print-interactive-summary h5 {
+    color: #f1f4f6 !important;
+    font-size: 16px !important;
+    line-height: 1.4;
+    margin: 0 0 8px !important;
+    break-after: avoid-page;
+  }
+
+  .print-interactive-summary p {
+    color: #d0d9df !important;
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+}

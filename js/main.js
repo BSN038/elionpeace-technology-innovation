@@ -659,6 +659,85 @@ document.addEventListener("DOMContentLoaded", () => {
     setMaturity(2);
   }
 
+
+  /* ---------------------------------------------
+     10. COMPLETE CONTENT FOR PDF PRINTING
+     Uses the original interactive content
+     without changing the live website
+  --------------------------------------------- */
+
+  function createPrintableDetails(target, items, type) {
+
+    if (!target || !Array.isArray(items)) {
+      return;
+    }
+
+    const printId = target.id + "-print";
+
+    if (document.getElementById(printId)) {
+      return;
+    }
+
+    const container = document.createElement("div");
+
+    container.id = printId;
+    container.className = "print-interactive-summary";
+
+    items.forEach((item, index) => {
+
+      const article = document.createElement("article");
+      article.className = "print-summary-item";
+
+      const label = document.createElement("span");
+      label.className = "detail-label";
+
+      const number = String(index + 1).padStart(2, "0");
+
+      if (type === "technology") {
+        label.textContent = item.label;
+      } else if (type === "journey") {
+        label.textContent = `STAGE ${number} / 05`;
+      } else {
+        label.textContent = `LEVEL ${number} / 05`;
+      }
+
+      const heading = document.createElement("h5");
+      heading.textContent = item.title;
+
+      const paragraph = document.createElement("p");
+      paragraph.textContent = item.description;
+
+      article.appendChild(label);
+      article.appendChild(heading);
+      article.appendChild(paragraph);
+
+      container.appendChild(article);
+
+    });
+
+    target.insertAdjacentElement("afterend", container);
+
+  }
+
+  createPrintableDetails(
+    technologyDetail,
+    technologyData,
+    "technology"
+  );
+
+  createPrintableDetails(
+    journeyDetail,
+    journeyData,
+    "journey"
+  );
+
+  createPrintableDetails(
+    maturityDetail,
+    maturityData,
+    "maturity"
+  );
+
+
   /* ---------------------------------------------
      09. FINAL INITIALISATION
   --------------------------------------------- */
